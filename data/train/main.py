@@ -41,7 +41,6 @@ class_labels=['Happy','Neutral','Sad']
 
 img, label = train_generator.__next__()
 
-
 model = Sequential()
 
 model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(48,48,1)))

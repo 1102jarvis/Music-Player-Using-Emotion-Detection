@@ -10,6 +10,7 @@ redirect_uri = 'http://google.com/callback/'
 
 oauth_object = spotipy.SpotifyOAuth(client_id,client_secret_id,redirect_uri)
 token_dict = oauth_object.get_access_token()
+print(token_dict)
 token = token_dict['access_token']
 spotify_object = spotipy.Spotify(auth=token)
 user_name = spotify_object.current_user()
@@ -30,14 +31,7 @@ def play_song(song):
 def play_from_playlist(playlist_uri):
   playlist_tracks = spotify_object.playlist_tracks(playlist_uri)
   random_track = random.choice(playlist_tracks['items'])
-  track_name = random_track['track']['name']
-  results = spotify_object.search(track_name,1,0,'track')
-  print(results)
-  song_dict = results['tracks']
-  song_items = song_dict['items']
-  if not song_items:
-    print('Enter valid song')
-    return
-  song = song_items[0]['external_urls']['spotify']
+  print(random_track)
+  song = random_track['track']['external_urls']['spotify']
   webbrowser.open(song)
   print('Song is opened in the browser')
