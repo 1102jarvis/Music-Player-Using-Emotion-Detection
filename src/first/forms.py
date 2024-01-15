@@ -5,5 +5,8 @@ class ImageForm(forms.ModelForm):
   class Meta:
     model = Face_Image
     fields = ('image',)
+    widgets = {
+            'image': forms.FileInput(attrs={'accept': 'image/*', 'capture': 'environment'}),
+        }
     
     

@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import ImageForm
-from models import test
+from django.conf import settings
+from models.test import detect_emotion
+import os
 # Create your views here.
 def home_screen(request):
   # print(request.headers)
@@ -14,7 +16,9 @@ def get_emotion(request):
     if form.is_valid():
       uploaded_img = form.save()
       imgUrl = uploaded_img.image.url
-      emotion = test(imgUrl)
+      print(imgUrl)
+      # imgUrl = imgUrl.replace('/',os.sep)
+      emotion = detect_emotion('C:/Users/91744/Desktop/Music-Player-Using-Emotion-Detection/src'+imgUrl)
       return render(request,'second.html',{'form':form,'emotion':emotion})
     else:
       form = ImageForm()
