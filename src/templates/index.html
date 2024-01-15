@@ -1,17 +1,21 @@
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NCN Music</title>
-  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="static/ncnMusic/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 <body>
+  <header id="header">
+    <h1>NCN MUSIC</h1>
+</header>
   <div class="container">
     <div class="wrapper">
       <div class="image">
-        <img src="" alt="">
+        <img alt="">
       </div>
       <div class="content">
         <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
@@ -20,9 +24,16 @@
       <div id="cancel-btn"><i class="fas fa-times"></i></div>
       <div class="file-name">File name here</div>
     </div>
-    <button onclick="defaultBtnActive()" id="custom-btn">Choose a file</button>
-    <input id="default-btn" type="file" hidden>
+    <form action="get_emotion" method="post" enctype="multipart/form-data">
+      {% csrf_token %}   
+      {{form}}
+    <button type="button" id="custom-btn">Choose Files</button>
+    <button type="submit" id="upload-btn" disabled>Upload</button>
+    </form>
   </div>
-  <script src="static/script.js"></script>
+  <script src="static/ncnMusic/js/script.js"></script>
 </body>
+<footer id="footer">
+  <p>&copy; 2024 NCN Music. All rights reserved.</p>
+</footer>
 </html>

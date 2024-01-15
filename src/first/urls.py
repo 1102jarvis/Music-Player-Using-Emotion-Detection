@@ -1,5 +1,11 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
-  path('',views.home_screen)
+  path('',views.home_screen),
+  path('get_emotion',views.get_emotion),
 ]
+
+if settings.DEBUG:
+  urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
