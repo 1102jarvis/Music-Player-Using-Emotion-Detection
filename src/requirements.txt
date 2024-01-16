@@ -1,4 +1,4 @@
-python==3.11.1  
+python_version>=3.7,<3.12
 absl-py==1.4.0
 asgiref==3.7.2
 astunparse==1.6.3
