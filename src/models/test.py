@@ -1,5 +1,6 @@
 import cv2,os
 import numpy as np
+import time
 from models import spotify
 from keras.models import load_model
 model=load_model('models/model_file.h5')
@@ -11,13 +12,11 @@ neutral_songs_uri = 'spotify:playlist:1QbJym8B3Xb6rpXdk7MBiJ'
 faceDetect=cv2.CascadeClassifier('models/haarcascade_frontalface_default.xml')
 
 labels_dict={0:'Happy',1:'Neutral',2:'Sad'}
-def detect_emotion(imgPath):
+def detect_emotion(img):
   text=''
   try:
-    # assert os.path.exists(imgPath)
-    print(imgPath)
-    if(os.path.exists(imgPath)):
-      frame=cv2.imread(imgPath)
+    if(os.path.exists(img)):
+      frame=cv2.imread(img)
       gray=cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
       faces= faceDetect.detectMultiScale(gray, 1.3, 3)
       for x,y,w,h in faces:

@@ -4,6 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
   path('',views.home_screen),
+  path('index.html',views.home_screen),
   path('get_emotion',views.get_emotion),
 ]
 

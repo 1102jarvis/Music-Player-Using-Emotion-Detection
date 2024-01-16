@@ -13,7 +13,18 @@
     <h1>NCN MUSIC</h1>
 </header>
   <div class="container">
-    <h1>Playing Song for {{emotion}} emotion</h1>
+    <div class="result">
+      {% if emotion == "Happy" %}
+      <h1>Joyful Beats for a Happy Heart: Let Music Spark Your Smiles.</h1>
+      {% elif emotion == "Neutral" %}
+      <h1>Relax and unwind with music that matches your peaceful state of mind.</h1>
+      {% elif emotion == "Sad" %}
+      <h1>Embrace the Blues: Let Music Speak to Your Heart in Sad Moments.</h1>
+      {% else %}
+      <h1>No Face Detected</h1>
+      {% endif %}
+      <a href="/index.html" id="home-btn"><i style="margin-top: 20px; font-size:large" class="fa fa-home" aria-hidden="true"></i></a>
+    </div>
   </div>
   <script src="static/ncnMusic/js/script.js"></script>
 </body>
